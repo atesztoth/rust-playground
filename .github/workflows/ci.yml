@@ -1,0 +1,25 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "master" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build
+    # Dead code is allowed in the build pipeline, there will be a lot of dead code in this repo,
+    # but that is perfectly fine. I am OK with warnings locally (this is why dead_code is not allowed globally)
+    # but not in the build pipeline.
+      run: RUSTFLAGS="$RUSTFLAGS -A dead_code" cargo build --verbose
+    - name: Test
+      run: cargo test --verbose
