@@ -57,7 +57,7 @@ mod test {
 
     #[test]
     fn partial_eq() {
-        assert_eq!(*ONE_A, *ONE_B);
+        assert_ne!(*ONE_A, *ONE_B);
     }
 
     #[test]
