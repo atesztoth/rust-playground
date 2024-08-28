@@ -15,11 +15,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build
-    # Dead code is allowed in the build pipeline, there will be a lot of dead code in this repo,
-    # but that is perfectly fine. I am OK with warnings locally (this is why dead_code is not allowed globally)
-    # but not in the build pipeline.
-      run: RUSTFLAGS="$RUSTFLAGS -A dead_code" cargo build --verbose
-    - name: Test
-      run: cargo test --verbose
+      - uses: actions/checkout@v4
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+        with:
+          toolchain: 1.80.0
+      - name: Build
+        # Dead code is allowed in the build pipeline, there will be a lot of dead code in this repo,
+        # but that is perfectly fine. I am OK with warnings locally (this is why dead_code is not allowed globally)
+        # but not in the build pipeline.
+        run: RUSTFLAGS="$RUSTFLAGS -A dead_code" cargo build --verbose
+      - name: Test
+        run: cargo test --verbose

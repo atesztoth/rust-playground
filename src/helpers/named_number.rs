@@ -50,14 +50,13 @@ mod test {
     static ONE_A: LazyLock<NamedNumber> =
         LazyLock::new(|| NamedNumber::new(String::from("One_a"), 1));
 
-    static ONE_B: LazyLock<NamedNumber> =
-        LazyLock::new(|| NamedNumber::new(String::from("One_b"), 1));
-
     static TWO: LazyLock<NamedNumber> = LazyLock::new(|| NamedNumber::new(String::from("Two"), 2));
 
     #[test]
     fn partial_eq() {
-        assert_ne!(*ONE_A, *ONE_B);
+        let one_na = NamedNumber::new(String::from("I one-na be a good named number!"), 1);
+        let one_be = NamedNumber::new(String::from("I one-na be a good named number!"), 1);
+        assert_eq!(one_na, one_be);
     }
 
     #[test]
