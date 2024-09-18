@@ -1,4 +1,4 @@
-name: Build and Test
+name: Build, test, lint
 
 on:
   push:
@@ -18,7 +18,6 @@ jobs:
         with:
           toolchain: 1.80.0
       - name: Build
-        # I always allow dead_code in test runs.
         run: RUSTFLAGS="$RUSTFLAGS -A dead_code" cargo build --verbose
       - name: Test
         run: cargo test --verbose
@@ -31,5 +30,4 @@ jobs:
         with:
           toolchain: 1.80.0
       - name: Lint
-      - name: Test
         run: cargo clippy
