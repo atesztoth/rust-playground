@@ -12,11 +12,8 @@ pub fn merge_sort<T: PartialOrd + Clone>(list: &[T]) -> Vec<T> {
 }
 
 fn merge<T: PartialOrd + Clone>(left: &[T], right: &[T]) -> Vec<T> {
-    // Snippet, merging two iterables (cloned):
-    // left.iter().cloned().chain(right.iter().cloned()).collect()
-
-    let left: Vec<T> = left.iter().cloned().collect();
-    let right: Vec<T> = right.iter().cloned().collect();
+    let left: Vec<T> = left.to_vec();
+    let right: Vec<T> = right.to_vec();
     let mut result: Vec<T> = Vec::with_capacity(left.len() + right.len());
 
     // left tracker, right tracker

@@ -1,9 +1,11 @@
+#![allow(dead_code)]
 #![allow(unused_variables)]
 
 use crate::sorts::quick_sort::{quick_sort, quick_sort_into};
 use crate::sorts::quick_sort_unsafe::quick_sort as quick_sort_unsafe;
 
 mod helpers;
+mod random_stuff;
 mod sorts;
 
 fn main() {
@@ -39,8 +41,7 @@ fn quick_sort_example() {
 /// Then hit 2: vec.swap. :'( That is the idiomatic way to go.
 /// Anyway, at least I gained some information along the way.
 #[inline]
-#[allow(dead_code)]
-fn swap<T>(a: &mut T, b: &mut T) -> () {
+fn swap<T>(a: &mut T, b: &mut T) {
     // I don't want to copy the values. Why would I do that? Waste of resources.
     // Like I could say T: Copy + Clone, or just Clone, and
     // let aa = a.clone();

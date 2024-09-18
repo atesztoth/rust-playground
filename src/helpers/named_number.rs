@@ -2,7 +2,6 @@ use std::cmp::Ordering;
 
 #[derive(Debug, Clone)]
 pub struct NamedNumber {
-    #[allow(dead_code)]
     name: String,
     value: i8,
 }

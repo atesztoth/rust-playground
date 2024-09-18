@@ -1,22 +1,20 @@
 use crate::helpers::slice_extension::SliceExtension;
 
 /// Sorts the argument vector in place.
-pub fn quick_sort<T: PartialOrd>(list: &mut [T])
-{
+pub fn quick_sort<T: PartialOrd>(list: &mut [T]) {
     if list.len() < 2 {
         return;
     }
     quick_sort_core(list, 0, list.len() - 1);
 }
 
-pub fn quick_sort_into<T: PartialOrd + Clone>(list: &[T]) -> Vec<T>
-{
+pub fn quick_sort_into<T: PartialOrd + Clone>(list: &[T]) -> Vec<T> {
     let mut vec = list.to_vec();
     quick_sort(&mut vec);
     vec
 }
 
-fn quick_sort_core<T: PartialOrd>(list: &mut [T], low: usize, high: usize) -> () {
+fn quick_sort_core<T: PartialOrd>(list: &mut [T], low: usize, high: usize) {
     if low >= high {
         return;
     }
